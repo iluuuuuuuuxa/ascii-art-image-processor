@@ -1,52 +1,32 @@
-# BI-OOP Semestral Project
+# ASCII Art Image Processor
 
-Select one of the projects bellow and implement it in this repository:
+## Overview
+An extensible command-line application (CLI) developed in Scala that loads images, processes them through a custom filter pipeline, and renders them into high-quality ASCII art. The project demonstrates strong object-oriented design principles, decoupled architecture, and test-driven development.
 
-## Table Processor
+## Architecture & Core Features
+* **Filter Pipeline:** A robust image processing pipeline supporting multiple sequential transformations, including Rotation, Scaling, Inversion, Flipping, Brightness adjustment, and Font Aspect Ratio correction.
+* **OOP Design Patterns:** Architected using standard GoF design patterns (e.g., Strategy for interchangeable ASCII mapping algorithms, Factory concepts for image loading, and Decorator-like filter chaining) to ensure decoupled and maintainable components.
+* **Immutable Domain Model:** The core `Image` data structure is strictly immutable. All filters and transformations return newly generated instances, preventing unwanted side effects and ensuring high testability.
+* **Extensible Conversion Engine:** Supports both linear and non-linear grayscale-to-ASCII mapping algorithms. The system is easily extensible for custom character sets and mapping logic.
+* **Flexible I/O:** Safely handles file loading (JPEG, PNG, GIF) via standard APIs, procedural random image generation, and outputs to multiple targets (Console and File).
 
-The main goal of the project is to create an application to process tables with formulas. We should be able to load the table, evaluate all formulas found in the table, filter the rows by their values in specified columns, and finally print the result.
+## Technical Stack
+* **Language:** Scala 3
+* **Build Tool:** SBT (Scala Build Tool)
+* **Testing:** ScalaTest, Mockito (Comprehensive unit test coverage for all modules)
+* **Concepts:** Object-Oriented Design (GoF), Immutable Data Structures, CLI Engineering, Image Processing
 
-[Course Page](https://courses.fit.cvut.cz/BI-OOP/projects/table-processor.html)
+## How to Build and Run
+This project uses `sbt` for compilation and execution.
 
-## ASCIIArt
+1. **Run the application:**
+You can run the CLI with various arguments to load an image, apply filters sequentially, and define the output.
 
-The idea of this project is to load images, translate them into ASCII ART images, optionally apply filters, and save them.
+* Example: `sbt "run --image src/main/resources/test1.jpg --rotate 90 --invert --scale 0.5 --output-console"`
+* Alternatively, you can generate a random image: `sbt "run --image-random --table nonlinear --output-file output.txt"`
 
-[Course Page](https://courses.fit.cvut.cz/BI-OOP/projects/ASCII-art.html)
+## Run Unit Tests
+To execute the comprehensive ScalaTest suite: `sbt test`
 
-## Project Structure
-
-### `project/build.properties`
-Specifies the SBT version
-
-### `project/plugin.sbt`
-Defines the SBT plugins, in our case:
-- Test coverage (`sbt-coverage`)
-- Linter (`Wartremover`)
-- A JAR assembler (`sbt-assembly`, used for testing)
-- A formatter (`Scalafmt`)
-
-### `build.sbt`
-Configuration file defining project setting, dependencies and build instructions
-
-### `.gitignore`
-Tells git which files to ignore
-
-### `.gitlab-ci.yml`
-Defines the pipeline for GitLab (see [here](https://courses.fit.cvut.cz/BI-OOP/projects/index.html#gitlab-pipeline))
-
-### `.scalafmt.conf`
-This defines a style for the formatter, unifying the style of all source files
-
-This can be invoked with:
-- `sbt scalafmtAll` from system shell,
-- the command `scalafmtAll` inside the SBT shell,
-- or directly inside of IntelliJ IDEA ([guide here](https://scalameta.org/scalafmt/docs/installation.html#intellij))
-
-
-### `src/main/scala`
-The Scala source files
-
-### `src/test/scala`
-The Scala tests
-
+## Disclaimer
+*This project was developed as part of the Object-Oriented Programming course at the Faculty of Information Technology, CTU in Prague. The code is provided here primarily for demonstration of software architecture, OOP design patterns, and Scala proficiency.*
