@@ -7,7 +7,7 @@ An extensible command-line application (CLI) developed in Scala that loads image
 * **Filter Pipeline:** A robust image processing pipeline supporting multiple sequential transformations, including Rotation (`--rotate degrees`), Scaling (`--scale value`), Inversion (`--invert`), Flipping (`--flip x` and/or `--flip y`), Brightness adjustment (`--brightness value`), and Font Aspect Ratio correction (`--font-aspect-ratio x:y`).
 * **OOP Design Patterns:** Architected using standard GoF design patterns (e.g., Strategy for interchangeable ASCII mapping algorithms, Factory concepts for image loading, and Decorator-like filter chaining) to ensure decoupled and maintainable components.
 * **Immutable Domain Model:** The core `Image` data structure is strictly immutable. All filters and transformations return newly generated instances, preventing unwanted side effects and ensuring high testability.
-* **Extensible Conversion Engine:** Supports both linear and non-linear grayscale-to-ASCII mapping algorithms. The system is easily extensible for custom character sets and mapping logic.
+* **Extensible Conversion Engine:** Supports both linear and non-linear grayscale-to-ASCII mapping algorithms. The system is easily extensible for custom character sets (`--custom-table characters`, where “characters” is a set of characters representing a linear scale (for example, `.:-=+*#%@`)) and mapping logic.
 * **Flexible I/O:** Safely handles file loading (JPEG, PNG, GIF) via standard APIs, procedural random image generation, and outputs to multiple targets (Console and File).
 
 ## Technical Stack
