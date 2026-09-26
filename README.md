@@ -19,7 +19,7 @@ An extensible command-line application (CLI) developed in Scala that loads image
 ## How to Build and Run
 This project uses `sbt` for compilation and execution.
 
-1. **Run the application:**
+**Run the application:**
 You can run the CLI with various arguments to load an image, apply filters sequentially, and define the output.
 
 * Example: `sbt "run --image src/main/resources/test1.jpg --rotate 90 --invert --scale 0.5 --output-console"`
