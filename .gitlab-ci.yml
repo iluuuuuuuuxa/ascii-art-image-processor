@@ -1,0 +1,34 @@
+image: sbtscala/scala-sbt:eclipse-temurin-17.0.15_6_1.11.5_3.7.2
+
+stages:
+  - test
+  - external tests
+
+before_script:
+  - sbt --version
+
+test:
+  stage: test
+  script:
+    - sbt clean coverage test coverageReport
+  coverage: /Coverage was stmt=\[(\d*\.?\d*\%)\]/
+  artifacts:
+    when: always
+    paths:
+      - target/scala-*/scoverage-*
+    reports:
+      junit: target/test-reports/*.xml
+
+table_test:
+  stage: external tests
+  image: ${CI_REGISTRY}/bi-oop/tester:latest
+  script:
+    - /opt/tester/run.sh $CI_PROJECT_DIR tableProcessor
+  allow_failure: true
+
+ascii_test:
+  stage: external tests
+  image: ${CI_REGISTRY}/bi-oop/tester:latest
+  script:
+    - /opt/tester/run.sh $CI_PROJECT_DIR asciiart
+  allow_failure: true
