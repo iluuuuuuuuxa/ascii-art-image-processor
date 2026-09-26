@@ -8,7 +8,7 @@ An extensible command-line application (CLI) developed in Scala that loads image
 * **OOP Design Patterns:** Architected using standard GoF design patterns (e.g., Strategy for interchangeable ASCII mapping algorithms, Factory concepts for image loading, and Decorator-like filter chaining) to ensure decoupled and maintainable components.
 * **Immutable Domain Model:** The core `Image` data structure is strictly immutable. All filters and transformations return newly generated instances, preventing unwanted side effects and ensuring high testability.
 * **Extensible Conversion Engine:** Supports both linear and non-linear grayscale-to-ASCII mapping algorithms. The system is easily extensible for custom character sets (`--custom-table characters`, where “characters” is a set of characters representing a linear scale (for example, `.:-=+*#%@`)) and mapping logic.
-* **Flexible I/O:** Safely handles file loading (JPEG, PNG, GIF) via standard APIs, procedural random image generation, and outputs to multiple targets (Console and File).
+* **Flexible I/O:** Safely handles file loading (JPEG, PNG, GIF) via standard APIs, procedural random image generation (`--image-random`), and outputs to multiple targets (Console (`--output-console`) and File (`--output-file "path"`)).
 
 ## Technical Stack
 * **Language:** Scala 3
